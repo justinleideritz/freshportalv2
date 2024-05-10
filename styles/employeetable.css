@@ -1,0 +1,106 @@
+body {
+    font-family: arial, serif;
+    margin: 0;
+}
+
+#create,
+#logout {
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #4b556b;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#create:hover,
+#logout:hover {
+    background-color: #6b7280;
+    color: #fff;
+}
+
+.top {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #a0bf39;
+}
+
+tr {
+    color: #4b556b;
+    border-style: solid;
+    border-color: #4b556b;
+    transition: background-color 0.3s ease;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+td,
+th {
+    padding: 40px 20px;
+}
+
+tbody tr:hover {
+    background-color: #e8e8e8;
+}
+
+.footer-text {
+    text-align: center;
+    font-size: larger;
+    padding: 20px;
+}
+
+#delete {
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ed0e2c;
+    transition: background-color 0.3s ease;
+}
+
+#edit {
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f5a142;
+    transition: background-color 0.3s ease;
+}
+
+#edit:hover {
+    background-color: #f7ae5c;
+}
+
+#delete:hover {
+    background-color: #fc4760;
+}
+
+th {
+    text-align: left;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav div {
+    margin: 0px 40px;
+}
