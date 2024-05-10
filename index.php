@@ -8,7 +8,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 }
 
 
-require_once "dbcon.php";
+require "dbcon.php";
 
 // Lege variabelen die worden gevuld
 $username = $password = "";
@@ -90,12 +90,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
 <div class="top">
-    <img src="./images/images-removebg-preview.png" alt="">
+    <img src="images/images-removebg-preview.png" alt="">
     <h1><span style="color: #a0bf39;">Log</span> <span style="color: #4b556b">In</span></h1>
 </div>
 <div class="wrapper">
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="submit" value="Login">
         </div>
         <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-        <p>Forgot password? <a href="recover.php">Recover account</a>.</p>
+        <p>Forgot password? <a href="recoverPwForm.php">Recover account</a>.</p>
     </form>
 </div>
 </body>

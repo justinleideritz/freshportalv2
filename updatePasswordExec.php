@@ -1,28 +1,32 @@
 <?php
 include 'dbcon.php';
 
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
+
     $newPassword = $_POST['new_password'];
     $confirmPassword = $_POST['confirm_password'];
     $email = $_POST['email'];
     $token = $_POST['token'];
 
-    // Validate that passwords match
+    // Check voor de 2 wachtwoorden of ze overeenkomen
     if ($newPassword === $confirmPassword) {
-        // Securely hash the new password
+        // Het nieuwe wachtwoord word gehasht
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
         try {
 
-            // Update password in the database
+            // wachtwoord wordt geupdate in de database
             $sql = "UPDATE user SET USE_Password=:password WHERE USE_Email=:email";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':password', $hashedPassword);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
 
+            //token wordt verwijdert nadat ie niet meer nodig is
+            $sql2 = "UPDATE user SET USE_ResetToken=null WHERE USE_Email=:email";
+            $stmt2 = $conn->prepare($sql2);
+            $stmt2->bindParam(':email', $email);
+            $stmt2->execute();
 
             header('Location: index.php');
         } catch (PDOException $e) {
@@ -35,8 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
 
-    // If form is not submitted, redirect to the reset password page
-    header("Location: reset-password.php");
+    header("Location: ResetPasswordForm.php");
     exit;
 }
 ?>

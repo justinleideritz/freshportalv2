@@ -6,11 +6,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 require "dbcon.php";
 
-// Check if email is submitted
+// Check of de email input is ingevuld
 if (isset($_POST['email'])) {
 
     $email = $_POST['email'];
-    $token = generateRandomToken(); // Generate a random token
+    $token = generateRandomToken(); // random token genereren met de functie onderaan dit bestand
 
     $emailQuery = "SELECT USE_Username as username FROM user WHERE USE_Email = ?";
     $stmt = $conn->prepare($emailQuery);
@@ -18,7 +18,7 @@ if (isset($_POST['email'])) {
     $username = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Send email with password reset link
-    $resetLink = 'http://localhost/freshportalv2/reset-password.php?email=' . urlencode($email) . '&token=' . urlencode($token);
+    $resetLink = 'http://localhost/freshportalv2/ResetPasswordForm.php?email=' . urlencode($email) . '&token=' . urlencode($token);
     $mail = new PHPMailer(true);
     try {
         //Server settings
@@ -55,7 +55,7 @@ if (isset($_POST['email'])) {
         if ($stmt->execute()) {
 
             //Doorgestuurd naar login en als de query niet uitgevoerd kan worden komt er een error
-            header('Location: recover.php?pwrecoveryemail=sent');
+            header('Location: recoverPwForm.php?pwrecoveryemail=sent');
         } else {
 
             echo "Oops! Something went wrong with the query";
@@ -73,7 +73,7 @@ if (isset($_POST['email'])) {
 }
 
 
-// Function to generate random token
+// functie voor de token
 function generateRandomToken($length = 32)
 {
     return bin2hex(random_bytes($length));

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once 'dbcon.php';
+require 'dbcon.php';
 
 // lege variabelen die later ingevuld kunnen worden
 $username = $email = $password = $confirm_password = "";
@@ -111,13 +111,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="./styles/register.css">
+    <title>Freshportal | Register</title>
+    <link rel="stylesheet" href="styles/register.css">
 </head>
 
 <body>
 <div class="top">
-    <img src="./images/images-removebg-preview.png" alt="">
+    <img src="images/images-removebg-preview.png" alt="">
     <h1><span style="color: #a0bf39;">Make</span> <span style="color: #4b556b">Account</span></h1>
 </div>
 <div class="wrapper">

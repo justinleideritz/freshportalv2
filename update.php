@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freshportal</title>
+    <title>Freshportal | Update</title>
     <link rel="stylesheet" href="./styles/update.css">
 </head>
 
@@ -60,7 +60,7 @@ $result = $stmt->fetch(PDO::FETCH_OBJ);
         <input type="text" name="description" value="<?= $result->EMP_Description ?>">
     </div>
     <input required type="submit" name="updateCustomer" value="Save">
-    <a href="index.php">Back</a>
+    <a href="employeetable.php">Back</a>
 </form>
 <div class="footer">
     <p class="footer-text">

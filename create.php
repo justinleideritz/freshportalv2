@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freshportal</title>
-    <link rel="stylesheet" href="./styles/create.css">
+    <title>Freshportal | Create</title>
+    <link rel="stylesheet" href="styles/create.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@ if (isset($_GET['phone'])) {
 
 ?>
 <div class="top">
-    <img src="./images/images-removebg-preview.png" alt="">
+    <img src="images/images-removebg-preview.png" alt="">
     <h1><span style="color: #a0bf39;">Add</span> <span style="color: #4b556b">Employee</span></h1>
 </div>
 <form action="createExec.php" method="POST">

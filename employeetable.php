@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freshportal</title>
+    <title>Freshportal | Table</title>
     <link rel="stylesheet" href="./styles/employeetable.css">
 </head>
 
@@ -40,7 +40,7 @@ if ($current_hour > 5 && $current_hour < 12) {
     </div>
 </nav>
 <?php
-require("dbcon.php");
+require "dbcon.php";
 
 //Tabel wordt gemaakt
 echo '<div class="table">';

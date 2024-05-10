@@ -21,7 +21,7 @@ label {
 input[type="text"],
 input[type="date"],
 input[type="submit"],
-a[href="index.php"],
+a,
 select,
 textarea {
     display: inline-block;
@@ -35,7 +35,7 @@ textarea {
 }
 
 input[type="submit"],
-a[href="index.php"] {
+a {
     background-color: #4b556b;
     color: #fff;
     cursor: pointer;
@@ -43,7 +43,7 @@ a[href="index.php"] {
 }
 
 input[type="submit"]:hover,
-a[href="index.php"]:hover {
+a:hover {
     background-color: #6b7280;
 }
 
@@ -62,7 +62,7 @@ form {
     padding: 20px;
 }
 
-a[href="index.php"] {
+a {
     text-align: center;
     font-size: small;
 }
