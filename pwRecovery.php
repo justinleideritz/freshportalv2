@@ -31,8 +31,8 @@ if (isset($_POST['email'])) {
         $mail->SMTPSecure = 'ssl';
 
         //Recipients
-        $mail->setFrom('passwordrecover@noreply.com', 'Freshportal app');
-        $mail->addAddress($email); // Add a recipient
+        $mail->setFrom('passwordrecover@noreply.com', 'Account recovery');
+        $mail->addAddress($email);
 
         //Content
         $mail->isHTML(true);
