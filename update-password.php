@@ -24,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
 
 
-            echo 'Password updated successfully. You can login now! <a href="index.php">Login</a>';
-        } catch(PDOException $e) {
+            header('Location: index.php');
+        } catch (PDOException $e) {
 
             echo 'Error updating password: ' . $e->getMessage();
         }

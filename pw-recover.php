@@ -2,7 +2,6 @@
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 
 require 'vendor/autoload.php';
 require "dbcon.php";
@@ -19,7 +18,7 @@ if (isset($_POST['email'])) {
     $username = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Send email with password reset link
-    $resetLink = 'http://localhost/freshportal/reset-password.php?email=' . urlencode($email) . '&token=' . urlencode($token);
+    $resetLink = 'http://localhost/freshportalv2/reset-password.php?email=' . urlencode($email) . '&token=' . urlencode($token);
     $mail = new PHPMailer(true);
     try {
         //Server settings
@@ -28,8 +27,8 @@ if (isset($_POST['email'])) {
         $mail->SMTPAuth = true;
         $mail->Username = 'milkshakenl98@gmail.com';
         $mail->Password = 'knhagkljfsdrayum';
-        $mail->Port = 465; // Use Mailtrap SMTP port
-        $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';
 
         //Recipients
         $mail->setFrom('passwordrecover@noreply.com', 'Freshportal app');
