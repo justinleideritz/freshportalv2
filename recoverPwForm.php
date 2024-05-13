@@ -10,9 +10,15 @@
 <body>
 <?php
 if (isset($_GET['pwrecoveryemail'])) {
-    $styleMessage = 'messageon';
+    $styleEmailMessage = 'emailmessageon';
 } else {
-    $styleMessage = 'messageoff';
+    $styleEmailMessage = 'emailmessageoff';
+}
+
+if (isset($_GET['email'])) {
+    $styleEmailError = 'errormessageon';
+} else {
+    $styleEmailError = 'errormessageoff';
 }
 ?>
 <div class="top">
@@ -24,12 +30,13 @@ if (isset($_GET['pwrecoveryemail'])) {
         <div>
             <label>Email</label>
             <input required type="text" name="email">
-            <span class="<?= $styleMessage ?>">Email has been sent <br> (Check your spam folder when you haven't received the email)</span><br>
+            <span class="<?= $styleEmailError ?>">Recover email can not be send, check your email input</span>
+            <span class="<?= $styleEmailMessage ?>">Email has been sent <br> (Check your spam folder when you haven't received the email)</span><br>
         </div>
         <div>
             <input type="submit" value="Recover">
         </div>
-        <p>Do you remember your login? <a href="index.php">Login here</a>.</p>
+        <p>Do you remember your login? <a href="index.php">Login here</a></p>
     </form>
 </div>
 </body>

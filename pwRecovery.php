@@ -73,7 +73,8 @@ if (isset($_POST['email'])) {
 
     } catch (Exception $e) {
 
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        header('Location: recoverPwForm.php?email=doesntexist');
+        $emailError = 'Something went wrong, please check your email';
     }
 } else {
 
