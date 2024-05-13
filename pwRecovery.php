@@ -18,7 +18,7 @@ if (isset($_POST['email'])) {
     $username = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Send email with password reset link
-    $resetLink = 'http://localhost/freshportalv2/ResetPasswordForm.php?email=' . urlencode($email) . '&token=' . urlencode($token);
+    $resetLink = 'http://localhost/freshportalv2/resetPasswordForm.php?email=' . urlencode($email) . '&token=' . urlencode($token);
     $mail = new PHPMailer(true);
     try {
         //Server settings
