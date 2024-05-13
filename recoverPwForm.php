@@ -29,6 +29,7 @@ if (isset($_GET['pwrecoveryemail'])) {
         <div>
             <input type="submit" value="Recover">
         </div>
+        <p>Do you remember your login? <a href="index.php">Login here</a>.</p>
     </form>
 </div>
 </body>

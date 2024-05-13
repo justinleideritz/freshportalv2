@@ -80,11 +80,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hier wordt gekeken of er geen foutmeldingen zijn
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
 
+        $firstname = trim(ucfirst($_POST['firstname']));
+        $lastname = trim(ucfirst($_POST['lastname']));
+
         // Query wordt gemaakt om de nieuwe gebruiker toe te voegen
-        $sql = "INSERT INTO user (USE_Username, USE_Password, USE_Email) VALUES (:username, :password, :email)";
+        $sql = "INSERT INTO user (USE_Username, USE_Firstname, USE_Lastname, USE_Password, USE_Email) VALUES (:username, :firstname, :lastname, :password, :email)";
 
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
+            $stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
+            $stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
             $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
 
@@ -126,6 +131,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label>Username</label>
             <input type="text" name="username" value="<?php echo $username; ?>">
             <span><?php echo $username_err; ?></span>
+        </div>
+        <div>
+            <label>Firstname</label>
+            <input type="text" name="firstname">
+        </div>
+        <div>
+            <label>Lastname</label>
+            <input type="text" name="lastname">
         </div>
         <div>
             <label>Email</label>

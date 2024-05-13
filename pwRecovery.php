@@ -12,8 +12,8 @@ if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $token = generateRandomToken(); // random token genereren met de functie onderaan dit bestand
 
-    $emailQuery = "SELECT USE_Username as username FROM user WHERE USE_Email = ?";
-    $stmt = $conn->prepare($emailQuery);
+    $nameQuery = "SELECT USE_Firstname as firstname, USE_Username as username FROM user WHERE USE_Email = ?";
+    $stmt = $conn->prepare($nameQuery);
     $stmt->execute([$email]);
     $username = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -37,8 +37,16 @@ if (isset($_POST['email'])) {
         //Content
         $mail->isHTML(true);
         $mail->Subject = 'Password Recovery';
-        $mail->Body = 'Your username: ' . $username['username'] . '<br>' . 'If you forgot your password, you can reset it here: <a href="' . $resetLink . '">Reset Password</a>';
-
+        $mail->Body = '<p>Dear ' . $username['firstname'] . ',</p>
+        <p>We have received a request to reset the password for your account.</p>
+        <p>If you did not make this request, please disregard this email.</p>
+        <p>Your login name is: <strong>' . $username['username'] . '</strong></p>
+        <p>To reset your password, please click on the link below:</p>
+        <p><a href="' . $resetLink . '">Reset Password</a></p>
+        <p>If the above link does not work, copy and paste the following URL into your browser:</p>
+        <p>' . $resetLink . '</p>
+        <p>Thank you,</p>
+        <p>The Account Recovery Team A.K.A. Justin</p>';
         $mail->send();
 
         $sql = "UPDATE user SET USE_ResetToken = :resettoken WHERE USE_Email = :email";

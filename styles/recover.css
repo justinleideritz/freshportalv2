@@ -30,16 +30,14 @@ input[type="submit"]{
     box-sizing: border-box;
 }
 
-input[type="submit"],
-a[href="index.php"] {
+input[type="submit"] {
     background-color: #4b556b;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover,
-a[href="index.php"]:hover {
+input[type="submit"]:hover {
     background-color: #6b7280;
 }
 

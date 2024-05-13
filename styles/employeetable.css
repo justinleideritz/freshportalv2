@@ -3,8 +3,7 @@ body {
     margin: 0;
 }
 
-#create,
-#logout {
+#create {
     text-decoration: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -15,9 +14,24 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#create:hover,
-#logout:hover {
+#create:hover {
     background-color: #6b7280;
+    color: #fff;
+}
+#logout{
+    margin-left: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #b32104;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout:hover{
+    background-color: #ec2700;
     color: #fff;
 }
 
@@ -28,13 +42,14 @@ body {
 
 table {
     border-collapse: collapse;
-    margin: 30px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-top: 20px;
 }
 
-thead {
+.table-header {
     background-color: #a0bf39;
 }
 
@@ -45,16 +60,19 @@ tr {
     transition: background-color 0.3s ease;
 }
 
+td {
+    padding: 10px;
+}
+
+th {
+    padding: 15px;
+}
+
 .table {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
-}
-
-td,
-th {
-    padding: 40px 20px;
 }
 
 tbody tr:hover {
@@ -99,8 +117,26 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom-style: solid;
+    border-color: #4b556b;
+    border-width: 2px;
 }
 
 nav div {
     margin: 0px 40px;
+}
+
+input[type="text"] {
+    margin: 20p 0px;
+    display: inline-block;
+    text-decoration: none;
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border-color: #4b556b;
+    border-width: 2px;
+    text-align: center;
 }
