@@ -38,6 +38,7 @@
         </div>
         <div>
             <a id='create' href='create.php'>Add Employee</a>
+            <a id="manage" href="manage.php">Manage your account</a>
             <a id="logout" href='logout.php'>Logout</a>
         </div>
     </nav>

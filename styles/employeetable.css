@@ -1,9 +1,10 @@
 body {
     font-family: arial, serif;
-    margin: 0;
+    margin: 0px;
 }
 
-#create {
+#create,
+#manage {
     text-decoration: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -14,12 +15,12 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#create:hover {
+#create:hover,
+#manage:hover {
     background-color: #6b7280;
     color: #fff;
 }
 #logout{
-    margin-left: 20px;
     text-decoration: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -120,6 +121,7 @@ nav {
     border-bottom-style: solid;
     border-color: #4b556b;
     border-width: 2px;
+    height: 50px;
 }
 
 nav div {
