@@ -1,16 +1,12 @@
 body {
     font-family: arial;
+    margin: 0;
 }
 
 .top {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 50px;
-}
-
-h1 {
-    margin: 10px 0;
 }
 
 label {
@@ -100,4 +96,35 @@ a[href="index.php"] {
 
 .alert button:hover {
     background-color: #666;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: solid;
+    border-color: #4b556b;
+    border-width: 2px;
+    height: 50px;
+}
+
+nav div {
+    margin: 0px 40px;
+}
+
+#logout {
+    font-size: medium;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #b32104;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout:hover {
+    background-color: #ec2700;
+    color: #fff;
 }

@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freshportal | Update</title>
     <link rel="stylesheet" href="./styles/update.css">
+    <script src="https://kit.fontawesome.com/56f09bada5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-<div class="top">
-    <img src="./images/images-removebg-preview.png" alt="">
-    <h1><span style="color: #a0bf39;">Edit</span> <span style="color: #4b556b">Employee</span></h1>
-</div>
 <?php
+session_start();
 require("dbcon.php");
 
 //ID van de record wordt in een variabel gezet
@@ -25,11 +23,34 @@ $stmt = $conn->prepare($sqlUpdate);
 $data = ['employeeid' => $id];
 $stmt->execute($data);
 $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+//Verschillende berichten worden weergegeven op basis van tijd
+$current_hour = date('H');
+if ($current_hour > 5 && $current_hour < 12) {
+    $greeting = "Good morning";
+} elseif ($current_hour >= 12 && $current_hour < 18) {
+    $greeting = "Good afternoon";
+} else {
+    $greeting = "Good evening";
+}
 ?>
+<nav>
+    <div>
+        <?php
+        echo "<h1><span style='color: #a0bf39;'>" . $greeting . ",</span> <span style='color: #4b556b;'>" . ucfirst($_SESSION['username']) . "</span></h1>";
+        ?>
+    </div>
+    <div>
+        <a id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i> Logout</a>
+    </div>
+</nav>
 <form action="updateExec.php" method="POST">
+    <div class="top">
+        <h1><span style="color: #a0bf39;">Edit</span> <span style="color: #4b556b">Employee</span></h1>
+    </div>
     <div>
         <label for="employeeid">ID</label>
-        <input hidden required type="text" name="id" value="<?= $result->EMP_ID ?>">
+        <input disabled required type="text" name="id" value="<?= $result->EMP_ID ?>">
     </div>
     <div>
         <label for="firstname">First name</label>

@@ -1,16 +1,12 @@
 body {
     font-family: arial, serif;
+    margin: 0;
 }
 
 .top {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 50px;
-}
-
-h1 {
-    margin-top: 70px;
 }
 
 label {
@@ -21,9 +17,7 @@ label {
 input[type="text"],
 input[type="date"],
 input[type="submit"],
-a,
-select,
-textarea {
+a[href="employeetable.php"] {
     display: inline-block;
     text-decoration: none;
     width: 100%;
@@ -35,7 +29,7 @@ textarea {
 }
 
 input[type="submit"],
-a {
+a[href="employeetable.php"] {
     background-color: #4b556b;
     color: #fff;
     cursor: pointer;
@@ -43,7 +37,7 @@ a {
 }
 
 input[type="submit"]:hover,
-a:hover {
+a[href="employeetable.php"]:hover {
     background-color: #6b7280;
 }
 
@@ -65,4 +59,35 @@ form {
 a {
     text-align: center;
     font-size: small;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: solid;
+    border-color: #4b556b;
+    border-width: 2px;
+    height: 50px;
+}
+
+nav div {
+    margin: 0px 40px;
+}
+
+#logout {
+    font-size: medium;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #b32104;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout:hover {
+    background-color: #ec2700;
+    color: #fff;
 }

@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freshportal | Create</title>
     <link rel="stylesheet" href="styles/create.css">
+    <script src="https://kit.fontawesome.com/56f09bada5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 <?php
+session_start();
 if (isset($_GET['email'])) {
     $styleEmail = "messageon";
 } else {
@@ -22,12 +24,30 @@ if (isset($_GET['phone'])) {
     $stylePhone = "messageoff";
 }
 
+//Verschillende berichten worden weergegeven op basis van tijd
+$current_hour = date('H');
+if ($current_hour > 5 && $current_hour < 12) {
+    $greeting = "Good morning";
+} elseif ($current_hour >= 12 && $current_hour < 18) {
+    $greeting = "Good afternoon";
+} else {
+    $greeting = "Good evening";
+}
 ?>
-<div class="top">
-    <img src="images/images-removebg-preview.png" alt="">
-    <h1><span style="color: #a0bf39;">Add</span> <span style="color: #4b556b">Employee</span></h1>
-</div>
+<nav>
+    <div>
+        <?php
+        echo "<h1><span style='color: #a0bf39;'>" . $greeting . ",</span> <span style='color: #4b556b;'>" . ucfirst($_SESSION['username']) . "</span></h1>";
+        ?>
+    </div>
+    <div>
+        <a id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i> Logout</a>
+    </div>
+</nav>
 <form action="createExec.php" method="POST">
+    <div class="top">
+        <h1><span style="color: #a0bf39;">Add</span> <span style="color: #4b556b">Employee</span></h1>
+    </div>
     <div id="alertBoxEmail" class="<?= $styleEmail ?> alert">
         <p>Email already exists</p>
         <button onclick="hideEmailAlert()">Close</button>
