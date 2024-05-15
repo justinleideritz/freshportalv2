@@ -10,6 +10,8 @@ require 'dbcon.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Freshportal | Manage Acount</title>
     <link rel="stylesheet" href="./styles/manage.css">
+    <script src="https://kit.fontawesome.com/56f09bada5.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -32,7 +34,8 @@ if ($current_hour > 5 && $current_hour < 12) {
         ?>
     </div>
     <div>
-        <a id="logout" href='logout.php'>Logout</a>
+        <a onclick="return confirmLogout()" id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i>
+            Logout</a>
     </div>
 </nav>
 
@@ -79,6 +82,11 @@ $result = $stmt->fetch(PDO::FETCH_OBJ);
         &copy; Justin Leideritz
     </p>
 </div>
+<script>
+    function confirmLogout() {
+        return confirm("Are you sure you want to logout?");
+    }
+</script>
 </body>
 
 </html>

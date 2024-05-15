@@ -41,7 +41,8 @@ if ($current_hour > 5 && $current_hour < 12) {
         ?>
     </div>
     <div>
-        <a id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i> Logout</a>
+        <a onclick="return confirmLogout()" id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i>
+            Logout</a>
     </div>
 </nav>
 <form action="createExec.php" method="POST">
@@ -101,6 +102,10 @@ if ($current_hour > 5 && $current_hour < 12) {
 
     function hidePhoneAlert() {
         document.getElementById("alertBoxPhone").style.display = "none";
+    }
+
+    function confirmLogout() {
+        return confirm("Are you sure you want to logout?");
     }
 </script>
 </body>

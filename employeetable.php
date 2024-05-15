@@ -39,7 +39,8 @@ if ($current_hour > 5 && $current_hour < 12) {
     <div>
         <a id='create' href='create.php'><i class="fa-solid fa-plus"></i> Add Employee</a>
         <a id="manage" href="manage.php"><i class="fa-solid fa-user"></i> Manage your account</a>
-        <a id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i> Logout</a>
+        <a onclick="return confirmLogout()" id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i>
+            Logout</a>
     </div>
 </nav>
 <?php
@@ -86,6 +87,10 @@ echo "</table>";
     //Bevestiging voor het verwijderen van een record
     function confirmDelete() {
         return confirm("Are you sure you want to delete this row?");
+    }
+
+    function confirmLogout() {
+        return confirm("Are you sure you want to logout?");
     }
 
     //Zoekbalk
