@@ -75,7 +75,6 @@ foreach ($sqlTable as $row) {
 }
 echo "</tbody>";
 echo "</table>";
-echo "</table>";
 ?>
 <div class="footer">
     <p class="footer-text">
@@ -102,8 +101,8 @@ echo "</table>";
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td");
-            for (var j = 0; j < td.length; j++) {
-                var cell = td[j];
+            for (let j = 0; j < td.length; j++) {
+                let cell = td[j];
                 if (cell) {
                     txtValue = cell.textContent || cell.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
