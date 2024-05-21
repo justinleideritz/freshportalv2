@@ -49,7 +49,7 @@ $result = $stmt->fetch(PDO::FETCH_OBJ);
 ?>
 <form action="manageExec.php" method="POST">
     <div class="top">
-        <h1><span style="color: #a0bf39;">Update</span> <span style="color: #4b556b">User</span></h1>
+        <h1><span style="color: #a0bf39;">Account</span> <span style="color: #4b556b">Profile</span></h1>
     </div>
     <div>
         <label for="id">ID</label>

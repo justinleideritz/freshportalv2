@@ -142,3 +142,63 @@ input[type="text"] {
     border-color: #4b556b;
     border-width: 2px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.pagination a {
+    color: #4b556b;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #a0bf39;
+    margin: 0 5px;
+    border-width: 2px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #4b556b;
+    color: white;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination a.disabled {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: default;
+    border-color: #dee2e6;
+}
+
+.pagination a:first-child {
+    margin-left: 0;
+}
+
+.pagination a:last-child {
+    margin-right: 0;
+}
+
+.pagination form {
+    display: inline-block;
+}
+
+.pagination select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #a0bf39;
+    color: #4b556b;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+}

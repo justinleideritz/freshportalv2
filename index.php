@@ -7,10 +7,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     exit;
 }
 
-
 require "dbcon.php";
 
-// Lege variabelen die worden gevuld
 $username = $password = "";
 $username_err = $password_err = "";
 
@@ -33,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Als de errors in de variabelen allebij leeg zijn wordt het ID, username en wachtwoord opgehaald
     if (empty($username_err) && empty($password_err)) {
-        // Prepare a select statement
         $sql = "SELECT USE_ID, USE_Username, USE_Password FROM user WHERE USE_Username = :username";
 
         //Hier wordt gekeken of the query is ophaald of niet zo ja dan gaat die verder
@@ -53,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         // Hier wordt gekeken of the wachtwoorden overeenkomen
                         if (password_verify($password, $hashed_password)) {
-                            // Password is correct, so start a new session
                             session_start();
 
                             // Data wordt opgeslagen in sessie variabelen
