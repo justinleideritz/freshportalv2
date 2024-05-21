@@ -71,8 +71,40 @@ $pages = ceil($total / $limit);
     </div>
 </nav>
 
+
+
 <div class="table">
     <input type='text' id='searchInput' onkeyup='searchTable()' placeholder='Search for anything in the table...'>
+    <div class="pagination">
+        <?php
+        $previous = $page - 1;
+        $next = $page + 1;
+        $pagination_value = $_SESSION['pagination-value'];
+
+        if ($page > 1) {
+            echo "<a href='employeetable.php?page=$previous&pagination-value=$pagination_value'>Previous</a>";
+        } else {
+            echo "<a href='#'>Previous</a>";
+        }
+
+        for ($i = 1; $i <= $pages; $i++) {
+            echo "<a href='employeetable.php?page=$i&pagination-value=$pagination_value'>$i</a> ";
+        }
+
+        echo "<a href='employeetable.php?page=$next&pagination-value=$pagination_value'>Next</a>";
+        ?>
+        <form action="employeetable.php" method="get">
+            <select name="pagination-value" id="pagination-value">
+                <?php
+                foreach ([10, 20, 30, 40, 50] as $value) {
+                    $selected = ($value == $pagination_value) ? "selected" : "";
+                    echo "<option value='" . $value . "' $selected>" . $value . " Rows</option>";
+                }
+                ?>
+            </select>
+            <noscript><input type="submit" value="Apply"></noscript>
+        </form>
+    </div>
     <table id='employeeTable'>
         <thead>
         <tr class='table-header'>
@@ -129,8 +161,6 @@ $pages = ceil($total / $limit);
 
     echo "<a href='employeetable.php?page=$next&pagination-value=$pagination_value'>Next</a>";
     ?>
-</div>
-<div class="pagination">
     <form action="employeetable.php" method="get">
         <select name="pagination-value" id="pagination-value">
             <?php

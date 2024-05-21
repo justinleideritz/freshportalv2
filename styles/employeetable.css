@@ -194,7 +194,7 @@ input[type="text"] {
 .pagination select {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #4b556b;
+    border: 2px solid #4b556b;
     color: #4b556b;
     font-size: 16px;
     cursor: pointer;
