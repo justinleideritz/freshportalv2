@@ -133,11 +133,10 @@ $pages = ceil($total / $limit);
 <div class="pagination">
     <form action="employeetable.php" method="get">
         <select name="pagination-value" id="pagination-value">
-            <option disabled selected>Number of records</option>
             <?php
             foreach ([10, 20, 30, 40, 50] as $value) {
                 $selected = ($value == $pagination_value) ? "selected" : "";
-                echo "<option value='" . $value . "' $selected>" . $value . "</option>";
+                echo "<option value='" . $value . "' $selected>" . $value . " Rows</option>";
             }
             ?>
         </select>

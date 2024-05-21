@@ -60,3 +60,7 @@ form {
     align-items: center;
     margin-bottom: 50px;
 }
+
+.footer p {
+    color: #4b556b;
+}

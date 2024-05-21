@@ -59,3 +59,7 @@ form {
 .errormessageoff {
     display: none;
 }
+
+.footer p {
+    color: #4b556b;
+}

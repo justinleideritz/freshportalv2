@@ -88,3 +88,7 @@ form {
     font-size: larger;
     padding: 20px;
 }
+
+.footer p {
+    color: #4b556b;
+}
