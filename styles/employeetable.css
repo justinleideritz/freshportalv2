@@ -46,7 +46,7 @@ table {
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
     width: 95%;
     margin-top: 10px;
 }
@@ -140,6 +140,7 @@ input[type="text"] {
     box-sizing: border-box;
     border-color: #4b556b;
     border-width: 2px;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pagination {

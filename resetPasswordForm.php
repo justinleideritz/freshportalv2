@@ -29,7 +29,7 @@ if (isset($_GET['email']) && isset($_GET['token'])) {
             <h1><span style="color: #a0bf39;">Reset</span> <span style="color: #4b556b">Password</span></h1>
         </div>
         <div class="wrapper">
-            <form action="updatePasswordExec.php" method="post">
+            <form action="resetPasswordExec.php" method="post">
                 <div>
                     <label>New password</label>
                     <input type="password" name="new_password" required>

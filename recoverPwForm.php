@@ -26,7 +26,7 @@ if (isset($_GET['email'])) {
     <h1><span style="color: #a0bf39;">Recover</span> <span style="color: #4b556b">Account</span></h1>
 </div>
 <div class="wrapper">
-    <form action="pwRecovery.php" method="post">
+    <form action="recoverPwExec.php" method="post">
         <div>
             <label>Email</label>
             <input required type="text" name="email">
