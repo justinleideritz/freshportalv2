@@ -3,40 +3,6 @@ body {
     margin: 0px;
 }
 
-#create,
-#manage {
-    text-decoration: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-weight: bold;
-    background-color: #4b556b;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#create:hover,
-#manage:hover {
-    background-color: #6b7280;
-    color: #fff;
-}
-
-#logout {
-    text-decoration: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-weight: bold;
-    background-color: #b32104;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#logout:hover {
-    background-color: #ec2700;
-    color: #fff;
-}
-
 .top {
     display: flex;
     justify-content: space-evenly;
@@ -80,12 +46,6 @@ tbody tr:hover {
     background-color: #e8e8e8;
 }
 
-.footer-text {
-    text-align: center;
-    font-size: larger;
-    padding: 20px;
-}
-
 #delete {
     color: white;
     padding: 10px;
@@ -126,21 +86,6 @@ nav {
 
 nav div {
     margin: 0px 40px;
-}
-
-input[type="text"] {
-    margin: 20px 0px;
-    display: inline-block;
-    text-decoration: none;
-    width: 40%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    border-color: #4b556b;
-    border-width: 2px;
-    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pagination {
@@ -200,8 +145,4 @@ input[type="text"] {
     cursor: pointer;
     outline: none;
     transition: border-color 0.3s ease;
-}
-
-.footer p {
-    color: #4b556b;
 }

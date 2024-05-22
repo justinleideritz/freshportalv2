@@ -14,7 +14,7 @@
 session_start();
 require("dbcon.php");
 
-//ID van de record wordt in een variabel gezet
+//ID van de record in de URL wordt in een variabel gezet
 $id = $_GET["id"];
 
 //Query om data op te halen via het ID
@@ -23,28 +23,12 @@ $stmt = $conn->prepare($sqlUpdate);
 $data = ['employeeid' => $id];
 $stmt->execute($data);
 $result = $stmt->fetch(PDO::FETCH_OBJ);
-
-//Verschillende berichten worden weergegeven op basis van tijd
-$current_hour = date('H');
-if ($current_hour > 5 && $current_hour < 12) {
-    $greeting = "Good morning";
-} elseif ($current_hour >= 12 && $current_hour < 18) {
-    $greeting = "Good afternoon";
-} else {
-    $greeting = "Good evening";
-}
 ?>
-<nav>
-    <div>
-        <?php
-        echo "<h1><span style='color: #a0bf39;'>" . $greeting . ",</span> <span style='color: #4b556b;'>" . ucfirst($_SESSION['username']) . "</span></h1>";
-        ?>
-    </div>
-    <div>
-        <a onclick="return confirmLogout()" id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i>
-            Logout</a>
-    </div>
-</nav>
+
+<?php
+require 'components/form-navbar.php';
+?>
+
 <form action="updateExec.php" method="POST">
     <div class="top">
         <h1><span style="color: #a0bf39;">Edit</span> <span style="color: #4b556b">Employee</span></h1>
@@ -84,16 +68,9 @@ if ($current_hour > 5 && $current_hour < 12) {
     <input required type="submit" name="updateCustomer" value="Save">
     <a href="employeetable.php">Back</a>
 </form>
-<div class="footer">
-    <p class="footer-text">
-        &copy; Justin Leideritz
-    </p>
-</div>
-<script>
-    function confirmLogout() {
-        return confirm("Are you sure you want to logout?");
-    }
-</script>
+<?php
+require 'components/footer.php';
+?>
 </body>
 
 </html>

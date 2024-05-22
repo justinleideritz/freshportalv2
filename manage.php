@@ -17,27 +17,8 @@ require 'dbcon.php';
 <body>
 <?php
 session_start();
-//Verschillende berichten worden weergegeven op basis van tijd
-$current_hour = date('H');
-if ($current_hour > 5 && $current_hour < 12) {
-    $greeting = "Good morning";
-} elseif ($current_hour >= 12 && $current_hour < 18) {
-    $greeting = "Good afternoon";
-} else {
-    $greeting = "Good evening";
-}
+require 'components/form-navbar.php';
 ?>
-<nav>
-    <div>
-        <?php
-        echo "<h1><span style='color: #a0bf39;'>" . $greeting . ",</span> <span style='color: #4b556b;'>" . ucfirst($_SESSION['username']) . "</span></h1>";
-        ?>
-    </div>
-    <div>
-        <a onclick="return confirmLogout()" id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i>
-            Logout</a>
-    </div>
-</nav>
 
 <?php
 $username = $_SESSION["username"];
@@ -77,16 +58,9 @@ $result = $stmt->fetch(PDO::FETCH_OBJ);
     </div>
     <p>Would you like to change password? <a href="recoverPwForm.php">Change it here</a></p>
 </form>
-<div class="footer">
-    <p class="footer-text">
-        &copy; Justin Leideritz
-    </p>
-</div>
-<script>
-    function confirmLogout() {
-        return confirm("Are you sure you want to logout?");
-    }
-</script>
+<?php
+require 'components/footer.php';
+?>
 </body>
 
 </html>

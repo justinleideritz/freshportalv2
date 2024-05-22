@@ -56,24 +56,14 @@ $pages = ceil($total / $limit);
 </head>
 
 <body>
-<nav>
-    <div>
-        <h1>
-            <span style='color: #a0bf39;'><?= $greeting ?>,</span>
-            <span style='color: #4b556b;'><?= ucfirst($_SESSION['username']) ?></span>
-        </h1>
-    </div>
-    <div>
-        <a id='create' href='create.php'><i class="fa-solid fa-plus"></i> Add Employee</a>
-        <a id="manage" href="manage.php"><i class="fa-solid fa-user"></i> Account</a>
-        <a id="logout" href='logout.php' onclick="return confirmLogout()"><i class="fa-solid fa-power-off"></i>
-            Logout</a>
-    </div>
-</nav>
-
+<?php
+require 'components/main-navbar.php'
+?>
 
 <div class="table">
-    <input type='text' id='searchInput' onkeyup='searchTable()' placeholder='Search for anything in the table...'>
+    <?php
+    require 'components/table-searchbar.php'
+    ?>
     <table id='employeeTable'>
         <thead>
         <tr class='table-header'>
@@ -151,10 +141,9 @@ $pages = ceil($total / $limit);
     </form>
 </div>
 
-
-<div class="footer">
-    <p class="footer-text">&copy; Justin Leideritz</p>
-</div>
+<?php
+require 'components/footer.php';
+?>
 
 <?php
 // Fetch all records for client-side search
@@ -170,39 +159,6 @@ $allRecords = $stmtAll->fetchAll(PDO::FETCH_ASSOC);
 
     function confirmLogout() {
         return confirm("Are you sure you want to logout?");
-    }
-
-    const allRecords = <?= json_encode($allRecords) ?>;
-
-    function searchTable() {
-        let input = document.getElementById("searchInput").value.toUpperCase();
-        let table = document.getElementById("employeeTable");
-        let tbody = table.getElementsByTagName("tbody")[0];
-        tbody.innerHTML = '';
-
-        allRecords.forEach(record => {
-            let showRow = false;
-            for (let key in record) {
-                if (record[key].toString().toUpperCase().includes(input)) {
-                    showRow = true;
-                    break;
-                }
-            }
-            if (showRow) {
-                let row = tbody.insertRow();
-                row.insertCell(0).innerText = record.EMP_ID;
-                row.insertCell(1).innerText = record.EMP_Firstname;
-                row.insertCell(2).innerText = record.EMP_Lastname;
-                row.insertCell(3).innerText = record.EMP_Email;
-                row.insertCell(4).innerText = record.EMP_Phone;
-                row.insertCell(5).innerText = record.EMP_Address;
-                row.insertCell(6).innerText = record.EMP_Birthdate;
-                row.insertCell(7).innerText = record.EMP_Description;
-                row.insertCell(8).innerHTML = `<a href='update.php?id=${record.EMP_ID}'><i id='edit' class='fa-solid fa-pen-to-square'></i></a>`;
-                row.insertCell(9).innerHTML = `<a href='delete.php?id=${record.EMP_ID}' onclick='return confirmDelete()'><i id='delete' class='fa-solid fa-trash'></i></a>`;
-                row.insertCell(10).innerText = record.EMP_DateAdded;
-            }
-        });
     }
 
     document.getElementById('pagination-value').addEventListener('change', function () {

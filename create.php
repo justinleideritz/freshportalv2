@@ -24,27 +24,11 @@ if (isset($_GET['phone'])) {
     $stylePhone = "messageoff";
 }
 
-//Verschillende berichten worden weergegeven op basis van tijd
-$current_hour = date('H');
-if ($current_hour > 5 && $current_hour < 12) {
-    $greeting = "Good morning";
-} elseif ($current_hour >= 12 && $current_hour < 18) {
-    $greeting = "Good afternoon";
-} else {
-    $greeting = "Good evening";
-}
 ?>
-<nav>
-    <div>
-        <?php
-        echo "<h1><span style='color: #a0bf39;'>" . $greeting . ",</span> <span style='color: #4b556b;'>" . ucfirst($_SESSION['username']) . "</span></h1>";
-        ?>
-    </div>
-    <div>
-        <a onclick="return confirmLogout()" id="logout" href='logout.php'><i class="fa-solid fa-power-off"></i>
-            Logout</a>
-    </div>
-</nav>
+
+<?php
+require 'components/form-navbar.php';
+?>
 <form action="createExec.php" method="POST">
     <div class="top">
         <h1><span style="color: #a0bf39;">Add</span> <span style="color: #4b556b">Employee</span></h1>
@@ -90,11 +74,9 @@ if ($current_hour > 5 && $current_hour < 12) {
         <a href="index.php">Back</a>
     </div>
 </form>
-<div class="footer">
-    <p class="footer-text">
-        &copy; Justin Leideritz
-    </p>
-</div>
+<?php
+require 'components/footer.php';
+?>
 <script>
     function hideEmailAlert() {
         document.getElementById("alertBoxEmail").style.display = "none";
@@ -102,10 +84,6 @@ if ($current_hour > 5 && $current_hour < 12) {
 
     function hidePhoneAlert() {
         document.getElementById("alertBoxPhone").style.display = "none";
-    }
-
-    function confirmLogout() {
-        return confirm("Are you sure you want to logout?");
     }
 </script>
 </body>
