@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Als de bovenste queries 1 of meer teruggeven worden er parameters toegevoegd in de URL zodat er een foutmelding wordt weergegeven
     //Anders wordt de "else" uitgevoerd waar de ingevulde data wordt opgeslagen
     $arr = [];
-    if ($phoneCount['count'] > 0) {
+    if ($phoneCount['count'] == 1) {
         $arr[] = 'phone=exists';
     }
-    if ($emailCount['count'] > 0) {
+    if ($emailCount['count'] == 1) {
         $arr[] = 'email=exists';
     } else {
         $sqlQuery = "INSERT INTO employee (EMP_Firstname, EMP_Lastname, EMP_Email, EMP_Address, EMP_Birthdate, EMP_Phone, EMP_Description)

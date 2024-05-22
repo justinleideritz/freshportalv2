@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["firstname"]))) {
         $firstname_err = "Please enter a name.<br><br>";
     } else {
-        $firstname = trim(ucfirst($_POST["password"]));
+        $firstname = trim(ucfirst($_POST["firstname"]));
     }
 
     // Als er geen wachtwoord is ingevuld of wachtwoord is niet langer dan 6 character dan komt er een error

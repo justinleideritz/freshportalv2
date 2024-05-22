@@ -167,9 +167,9 @@ input[type="text"] {
 }
 
 .pagination a.active {
-    background-color: #007bff;
+    background-color: #4b556b;
     color: white;
-    border-color: #007bff;
+    border-color: #4b556b;
 }
 
 .pagination a.disabled {
