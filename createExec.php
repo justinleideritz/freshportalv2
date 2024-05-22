@@ -3,10 +3,10 @@ require("dbcon.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Data ophalen van form
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
+    $firstName = ucfirst($_POST["firstName"]);
+    $lastName = ucfirst($_POST["lastName"]);
     $email = $_POST["email"];
-    $address = $_POST["address"];
+    $address = ucfirst($_POST["address"]);
     $birthdate = $_POST["birthdate"];
     $phone = $_POST["phone"];
     $description = $_POST["description"];

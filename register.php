@@ -1,29 +1,24 @@
 <?php
 session_start();
-
 require 'dbcon.php';
 
-// lege variabelen die later ingevuld kunnen worden
+// Define variables and initialize with empty values
 $username = $email = $firstname = $lastname = $password = $confirm_password = "";
 $username_err = $email_err = $firstname_err = $lastname_err = $password_err = $confirm_password_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //Als de username leeg is dan krijg je een error anders wordt the username opgeslagen in de variabel $username anders word er gekeken of het bestaat
+    // Validate username
     if (empty(trim($_POST["username"]))) {
-        $username_err = "Please enter a username. <br><br>";
+        $username_err = "Please enter a username.<br><br>";
     } else {
         $sql = "SELECT USE_ID FROM user WHERE USE_Username = :username";
-
-        //De ingevulde username wordt in de query gezet
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $param_username = trim($_POST["username"]);
-
-            //Query wordt uitgevoerd en als er dezelfde username bestaat komt er een foutmelding
             if ($stmt->execute()) {
                 if ($stmt->rowCount() == 1) {
-                    $username_err = "This username is already taken. <br><br>";
+                    $username_err = "This username is already taken.<br><br>";
                 } else {
                     $username = trim($_POST["username"]);
                 }
@@ -33,21 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             unset($stmt);
         }
     }
-    //Als de username leeg is dan krijg je een error anders wordt the username opgeslagen in de variabel $username anders word er gekeken of het bestaat
+
+    // Validate email
     if (empty(trim($_POST["email"]))) {
-        $email_err = "Please enter a email. <br><br>";
+        $email_err = "Please enter an email.<br><br>";
     } else {
         $sql = "SELECT USE_ID FROM user WHERE USE_Email = :email";
-
-        //De ingevulde username wordt in de query gezet
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
             $param_email = trim($_POST["email"]);
-
-            //Query wordt uitgevoerd en als er dezelfde username bestaat komt er een foutmelding
             if ($stmt->execute()) {
                 if ($stmt->rowCount() == 1) {
-                    $email_err = "This email is already taken. <br><br>";
+                    $email_err = "This email is already taken.<br><br>";
                 } else {
                     $email = trim($_POST["email"]);
                 }
@@ -58,66 +50,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Als er geen wachtwoord is ingevuld of wachtwoord is niet langer dan 6 character dan komt er een error
+    // Validate password
     if (empty(trim($_POST["password"]))) {
         $password_err = "Please enter a password.<br><br>";
     } elseif (strlen(trim($_POST["password"])) < 6) {
-        $password_err = "Password must have at least 6 characters. <br><br>";
+        $password_err = "Password must have at least 6 characters.<br><br>";
     } else {
         $password = trim($_POST["password"]);
     }
 
-    // Als er geen wachtwoord is ingevuld krijg je een error anders worden de 2 wachtwoorden vergeleken met elkaar
+    // Validate confirm password
     if (empty(trim($_POST["confirm_password"]))) {
-        $confirm_password_err = "Please confirm password. <br><br>";
+        $confirm_password_err = "Please confirm password.<br><br>";
     } else {
         $confirm_password = trim($_POST["confirm_password"]);
         if (empty($password_err) && ($password != $confirm_password)) {
-            $confirm_password_err = "Password did not match. <br><br>";
+            $confirm_password_err = "Password did not match.<br><br>";
         }
     }
 
-    // Als er geen wachtwoord is ingevuld of wachtwoord is niet langer dan 6 character dan komt er een error
+    // Validate firstname
     if (empty(trim($_POST["firstname"]))) {
-        $firstname_err = "Please enter a name.<br><br>";
+        $firstname_err = "Please enter a firstname.<br><br>";
     } else {
         $firstname = trim(ucfirst($_POST["firstname"]));
     }
 
-    // Als er geen wachtwoord is ingevuld of wachtwoord is niet langer dan 6 character dan komt er een error
+    // Validate lastname
     if (empty(trim($_POST["lastname"]))) {
         $lastname_err = "Please enter a lastname.<br><br>";
     } else {
         $lastname = trim(ucfirst($_POST["lastname"]));
     }
 
-    // Hier wordt gekeken of er geen foutmeldingen zijn
-    if (empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($firstname_err) && empty($lastname_err)) {
+    // Check input errors before inserting in database
+    if (empty($username_err) && empty($email_err) && empty($firstname_err) && empty($lastname_err) && empty($password_err) && empty($confirm_password_err)) {
 
-        // Query wordt gemaakt om de nieuwe gebruiker toe te voegen
+        // Prepare an insert statement
         $sql = "INSERT INTO user (USE_Username, USE_Firstname, USE_Lastname, USE_Password, USE_Email) VALUES (:username, :firstname, :lastname, :password, :email)";
 
         if ($stmt = $conn->prepare($sql)) {
+            // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $stmt->bindParam(":firstname", $firstname, PDO::PARAM_STR);
             $stmt->bindParam(":lastname", $lastname, PDO::PARAM_STR);
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
             $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
 
+            // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_email = $email;
 
-            //Query wordt uitgevoerd
+            // Attempt to execute the prepared statement
             if ($stmt->execute()) {
-                //Doorgestuurd naar login en als de query niet uitgevoerd kan worden komt er een error
+                // Redirect to login page
                 header("location: index.php");
+                exit();
             } else {
-                echo "Oops! Something went wrong with the query";
+                echo "Oops! Something went wrong. Please try again later.";
             }
             unset($stmt);
         }
     }
+    // Close connection
     unset($conn);
 }
 ?>
@@ -146,12 +142,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <label>Firstname</label>
             <input type="text" name="firstname">
-            <span><?php echo $firstname_err ?></span>
+            <span><?php echo $firstname_err; ?></span>
         </div>
         <div>
             <label>Lastname</label>
             <input type="text" name="lastname">
-            <span><?php echo $lastname_err ?></span>
+            <span><?php echo $lastname_err; ?></span>
         </div>
         <div>
             <label>Email</label>

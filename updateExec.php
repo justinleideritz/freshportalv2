@@ -3,10 +3,10 @@ require("dbcon.php");
 
 //Data van de form wordt opgeslagen in variabelen
 $id = $_POST["id"];
-$firstName = $_POST["firstname"];
-$lastName = $_POST["lastname"];
+$firstName = ucfirst($_POST["firstname"]);
+$lastName = ucfirst($_POST["lastname"]);
 $email = $_POST["email"];
-$address = $_POST["address"];
+$address = ucfirst($_POST["address"]);
 $birthdate = $_POST["birthdate"];
 $phone = $_POST["phone"];
 $description = $_POST["description"];

@@ -4,8 +4,8 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+    $firstname = ucfirst($_POST['firstname']);
+    $lastname = ucfirst($_POST['lastname']);
     $email = $_POST['email'];
     //Hier wordt de bestaande data geupdate door de nieuwe ingevulde waardes van de form, als er iets is misgegaan wordt er een PDO error weergegeven
     try {
@@ -13,8 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare($sqlUpdate);
 
         $stmt->bindparam(":username", $username);
-        $stmt->bindparam(":firstname", ucfirst($firstname));
-        $stmt->bindparam(":lastname", ucfirst($lastname));
+        $stmt->bindparam(":firstname", $firstname);
+        $stmt->bindparam(":lastname", $lastname);
         $stmt->bindparam(":email", $email);
         $stmt->bindparam(":id", $_SESSION["id"]);
 
