@@ -1,7 +1,8 @@
 <?php
+global $conn;
 session_start();
 
-// Redirect to login if not logged in
+// Redirect to log in if not logged in
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: index.php");
     exit;
@@ -129,6 +130,7 @@ require 'components/main-navbar.php'
     }
     ?>
     <form action="employeetable.php" method="get">
+        <label for="pagination-value"></label>
         <select name="pagination-value" id="pagination-value">
             <?php
             foreach ([10, 20, 30, 40, 50] as $value) {
