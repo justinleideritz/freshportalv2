@@ -25,7 +25,7 @@ $allRecords = $stmtAll->fetchAll(PDO::FETCH_ASSOC);
     }
 </style>
 
-<!--SEARCH BAR HTML-->
+<!--HTML-->
 <input type='text' id='searchInput' onkeyup='searchTable()' placeholder='Search for anything in the table...'>
 
 <!--JAVASCRIPT-->

@@ -8,7 +8,7 @@
     }
 </style>
 
-<!--HTML FOR FOOTER-->
+<!--HTML-->
 <div class="footer">
     <p class="footer-text">&copy; Justin Leideritz</p>
 </div>

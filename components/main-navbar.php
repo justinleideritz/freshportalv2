@@ -48,7 +48,7 @@ if ($current_hour > 5 && $current_hour < 12) {
     }
 </style>
 
-<!--HTML FOR NAVBAR-->
+<!--HTML-->
 <nav>
     <div>
         <h1>
