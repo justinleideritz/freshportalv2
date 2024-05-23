@@ -1,4 +1,5 @@
 <?php
+global $conn;
 require 'dbcon.php';
 
 ?>

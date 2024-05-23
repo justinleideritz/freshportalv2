@@ -1,4 +1,5 @@
 <?php
+global $conn;
 require("dbcon.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

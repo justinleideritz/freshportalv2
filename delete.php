@@ -1,4 +1,5 @@
 <?php
+global $conn;
 require("dbcon.php");
 
 //ID van de geselecteerde werknemer wordt opgeslagen om op basis hiervan een record te verwijderen

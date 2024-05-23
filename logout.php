@@ -11,4 +11,3 @@ session_destroy();
 // Doorsturing naar de login pagina
 header("location: index.php");
 exit;
-?>

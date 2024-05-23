@@ -1,4 +1,5 @@
 <?php
+global $conn;
 session_start();
 
 // Hier wordt gekeken of er al was ingelogd om dan gelijk doorgestuurd te worden naar de tabel
@@ -97,13 +98,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="wrapper">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div>
-            <label>Username</label>
-            <input type="text" name="username" value="<?php echo $username; ?>">
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" value="<?php echo $username; ?>">
             <span><?php echo $username_err; ?></span>
         </div>
         <div>
-            <label>Password</label>
-            <input type="password" name="password">
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password">
             <span><?php echo $password_err; ?></span>
         </div>
         <div>
