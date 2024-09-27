@@ -1,4 +1,5 @@
 <?php
+global $conn;
 require './dbcon.php';
 // Fetch all records for client-side search
 $sqlQueryAll = "SELECT * FROM employee";
