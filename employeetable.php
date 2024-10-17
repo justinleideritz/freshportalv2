@@ -63,7 +63,7 @@ require 'components/main-navbar.php'
 
 <div class="table">
     <?php
-    require 'components/table-searchbar.php'
+    //require 'components/table-searchbar.php'
     ?>
     <table id='employeeTable'>
         <thead>
