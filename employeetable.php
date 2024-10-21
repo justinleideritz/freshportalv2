@@ -62,9 +62,6 @@ require 'components/main-navbar.php'
 ?>
 
 <div class="table">
-    <?php
-    //require 'components/table-searchbar.php'
-    ?>
     <table id='employeeTable'>
         <thead>
         <tr class='table-header'>
@@ -101,46 +98,6 @@ require 'components/main-navbar.php'
         ?>
         </tbody>
     </table>
-</div>
-
-<div class="pagination">
-    <?php
-    $previous = $page - 1;
-    $next = $page + 1;
-    $pagination_value = $_SESSION['pagination-value'];
-
-    if ($page > 1) {
-        echo "<a href='employeetable.php?page=$previous&pagination-value=$pagination_value'>Previous</a>";
-    } else {
-        echo "<a href='#'>Previous</a>";
-    }
-
-    for ($i = 1; $i <= $pages; $i++) {
-        if ($i == $page) {
-            echo "<a href='employeetable.php?page=$i&pagination-value=$pagination_value' class='active'>$i</a> ";
-        } else {
-            echo "<a href='employeetable.php?page=$i&pagination-value=$pagination_value'>$i</a> ";
-        }
-    }
-
-    if ($page < $pages) {
-        echo "<a href='employeetable.php?page=$next&pagination-value=$pagination_value'>Next</a>";
-    } else {
-        echo "<a href='#'>Next</a>";
-    }
-    ?>
-    <form action="employeetable.php" method="get">
-        <label for="pagination-value"></label>
-        <select name="pagination-value" id="pagination-value">
-            <?php
-            foreach ([10, 20, 30, 40, 50] as $value) {
-                $selected = ($value == $pagination_value) ? "selected" : "";
-                echo "<option value='" . $value . "' $selected>" . $value . " Rows</option>";
-            }
-            ?>
-        </select>
-        <noscript><input type="submit" value="Apply"></noscript>
-    </form>
 </div>
 
 <?php
