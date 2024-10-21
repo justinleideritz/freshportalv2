@@ -18,23 +18,11 @@ if ($current_hour > 5 && $current_hour < 12) {
     $greeting = "Good evening";
 }
 
-// Set pagination value
-if (isset($_GET['pagination-value'])) {
-    $_SESSION['pagination-value'] = $_GET['pagination-value'];
-} elseif (!isset($_SESSION['pagination-value'])) {
-    $_SESSION['pagination-value'] = 10; // Default value
-}
-$limit = $_SESSION['pagination-value'];
-$page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
-$start = ($page - 1) * $limit;
-
 require "dbcon.php";
 
 // Fetch the records
-$sqlQuery = "SELECT * FROM employee LIMIT :start, :limit";
+$sqlQuery = "SELECT * FROM employee";
 $stmt = $conn->prepare($sqlQuery);
-$stmt->bindParam(':start', $start, PDO::PARAM_INT);
-$stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
 $stmt->execute();
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -42,7 +30,6 @@ $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $sqlCountQuery = "SELECT count(EMP_ID) AS id FROM employee";
 $countStmt = $conn->query($sqlCountQuery);
 $total = $countStmt->fetch(PDO::FETCH_ASSOC)['id'];
-$pages = ceil($total / $limit);
 ?>
 
 <!DOCTYPE html>
